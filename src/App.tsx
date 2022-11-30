@@ -15,7 +15,6 @@ type DropZoneComponentState = {
 const objectUrls: Array<string> = [];
 function App() {
   const [componentState, setComponentState] = useState<DropZoneComponentState>();
-  const inputFile = useRef<HTMLInputElement>(null);
   useEffect(() => {
     return () => {
       while (objectUrls.length > 0) {
@@ -105,7 +104,6 @@ function App() {
         {componentState?.dropZoneState === "unsupported" ? <p>Unsupported file type, please upload a jpeg or png image.</p> : <p>Drag an image into the <b>drop zone</b>.</p>}
       </div>
       {componentState?.imgSrc ? <img id={"dropped-image"} src={componentState?.imgSrc} /> : null}
-      <input accept="image/png,image/jpeg" type='image' ref={inputFile} style={{ display: 'none' }} />
     </div>
   )
 }
